@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Coding 工作流与评测实践 — 黄天达</title>
+<meta name="description" content="医疗 AI 全栈开发中的 AI Coding 实践：规则化上下文、方案驱动开发、契约即上下文、自动化验收 Harness，以及如何给 Coding Agent 设计评测指标。" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="bg-layer grid-bg noise-overlay">
+  <span class="glow-orb a"></span>
+  <span class="glow-orb b"></span>
+</div>
+
+<nav class="site-nav">
+  <div class="wrap inner">
+    <a class="brand" href="index.html"><span class="dot"></span>黄天达 · Tianda</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">关于</a></li>
+      <li><a href="index.html#experience">实习</a></li>
+      <li><a href="index.html#projects">项目</a></li>
+      <li><a href="ai-coding.html" class="active">AI Coding</a></li>
+      <li><a href="index.html#skills">技能</a></li>
+      <li><a href="index.html#contact">联系</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="kicker">AI Coding · Workflow &amp; Evaluation</div>
+    <h1 class="grad-text">把 AI Coding 从「能用」做成「可复现」</h1>
+    <p class="lead">
+      我是黄天达，北邮智能医学工程 2027 届。在医疗 AI 公司实习期间，我用 AI Coding（Codex / Claude Code）驱动医生工作站与质控平台的全栈开发，
+      并把其中可复用的部分沉淀成一套体系：<strong>规则化上下文 → 方案驱动开发 → 契约即上下文 → 自动化验收 Harness</strong>。
+    </p>
+    <div class="chips">
+      <span class="chip accent">Vue 3 + TypeScript + Vite</span>
+      <span class="chip accent">pnpm + Turborepo monorepo</span>
+      <span class="chip">FastAPI + Milvus + vLLM</span>
+      <span class="chip">Vitest + Chrome DevTools Protocol</span>
+    </div>
+
+    <div class="stats" style="margin-top:36px">
+      <div class="stat i"><b>149</b><span>单月提交（前端，独立分支）</span></div>
+      <div class="stat g"><b>343</b><span>改动文件（219 + 124，双应用）</span></div>
+      <div class="stat a"><b>40+</b><span>多分辨率验收截图证据</span></div>
+      <div class="stat v"><b>7 + 7</b><span>API 模块 + Mock 模块（全联调）</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">01 / Pillars</div>
+        <h2>四个支柱</h2>
+        <p>AI Coding 的产出质量不取决于提示词技巧，而取决于「上下文是否充分、边界是否明确、结果是否可验证」。我把这三点工程化成了四个可复用支柱。</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="card glow-card reveal">
+          <h3>① 规则化上下文</h3>
+          <p style="color:var(--sub);font-size:14px">用规则文件把团队约束固化，Agent 每次开工都自带"团队常识"。</p>
+          <ul>
+            <li><code>CLAUDE.md</code>：项目知识库与协作入口</li>
+            <li><code>.claude/rules/</code>：公共组件使用规则，避免重复造轮子</li>
+            <li>Monorepo 分层约束：core 不可反向依赖 apps</li>
+          </ul>
+        </div>
+        <div class="card glow-card reveal">
+          <h3>② 方案驱动开发</h3>
+          <p style="color:var(--sub);font-size:14px">先写方案与验收标准，再让 Agent 实现——把"需求分析到交付"变成可执行规格。</p>
+          <ul>
+            <li><code>docs/superpowers/plans/</code>：设计方案</li>
+            <li><code>docs/superpowers/specs/</code>：规格与验收定义</li>
+            <li>10 章节实施方案：范围 / 数据口径与 Mock / 接口约定 / 状态算法 / 任务拆分 / 验收标准</li>
+          </ul>
+        </div>
+        <div class="card glow-card reveal">
+          <h3>③ 契约即上下文</h3>
+          <p style="color:var(--sub);font-size:14px">接口契约与交接文档让 Agent 与人都能"拿到就能做"。</p>
+          <ul>
+            <li>《后端接口交接文档》：响应包裹、代理规则、按患者数据隔离、SSE 缓冲</li>
+            <li>质控面板 API 交接文档：5 个接口约定 + 关键枚举 + 错误行为</li>
+            <li><code>HANDOVER.md</code>：跨会话 / 跨人续做上下文</li>
+          </ul>
+        </div>
+        <div class="card glow-card reveal">
+          <h3>④ 自动化验收 Harness</h3>
+          <p style="color:var(--sub);font-size:14px">每个功能都定义"机器可判定"的完成标准，不靠口头确认。</p>
+          <ul>
+            <li>Vitest + @vue/test-utils：面板状态与渲染断言</li>
+            <li>CDP 浏览器自动化：900 / 1100 / 1440 / 1920 四档分辨率</li>
+            <li>截图留档 + DOM 文本导出，可回归、可比对</li>
+          </ul>
+        </div>
+        <div class="card glow-card reveal">
+          <h3>⑤ 小步交付与规范</h3>
+          <p style="color:var(--sub);font-size:14px">让 diff 可 review、可回滚、可追责。</p>
+          <ul>
+            <li>独立分支 + 功能粒度提交（单月 149 次）</li>
+            <li>Commitlint / ESLint / Prettier / Husky 前置校验</li>
+            <li>文档与代码同步更新（接口 / 方案随实现迭代）</li>
+          </ul>
+        </div>
+        <div class="card glow-card reveal">
+          <h3>⑥ 领域约束前置</h3>
+          <p style="color:var(--sub);font-size:14px">医疗场景的数据与合规约束，必须在上下文里说清楚。</p>
+          <ul>
+            <li>按患者数据隔离（member 维度），避免跨患者缓存</li>
+            <li>AI 输出需可审核、可修改、可追溯（labelData 同义词匹配兼容历史数据）</li>
+            <li>三环境隔离（dev / uat / prod），防止测试污染生产</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">02 / Case Study</div>
+        <h2>案例研究：质控工作站全局面板（0 → 1）</h2>
+        <p>一个真实交付闭环：从 10 章节方案到多分辨率验收，全程用 AI Coding 协作完成，人负责判断与验收标准。</p>
+      </div>
+
+      <div class="narrative">
+        <div class="reveal">
+          <div class="steps">
+            <div class="step">
+              <h4>① 方案与验收标准</h4>
+              <div class="when">设计方案 · 10 章节</div>
+              <p>范围界定（本期做 / 保留壳层）、页面结构与视觉基准、数据口径与 Mock 一致性锚点、5 个接口约定、状态算法（"患者待关注"公开规则）、12 项实施任务、验证与验收标准。</p>
+            </div>
+            <div class="step">
+              <h4>② 契约与类型先行</h4>
+              <div class="when">TypeScript 接口类型 · 7 API + 7 Mock</div>
+              <p>先定 7 个 API 模块的请求 / 响应类型与 Mock 数据（全联调模式），让前端在后端就绪前独立推进，也让 Agent 有确定结构可依。</p>
+            </div>
+            <div class="step">
+              <h4>③ 组件与状态实现</h4>
+              <div class="when">Vue 3 + Element Plus + Pinia + ECharts</div>
+              <p>组级指标、工作组两级展开、审核待办、文档管理、ECharts 可视化、中英 i18n；侧栏双击收起、筛选保活等交互细节按方案落地。</p>
+            </div>
+            <div class="step">
+              <h4>④ 自动化验收</h4>
+              <div class="when">Vitest + CDP 多分辨率</div>
+              <p>面板单测覆盖状态与渲染；浏览器自动化在 900 / 1100 / 1440 / 1920 下截图留档，配合 DOM 文本导出核对信息层级与文案口径。</p>
+            </div>
+            <div class="step">
+              <h4>⑤ 交付与迭代</h4>
+              <div class="when">规范提交 + 回归修复</div>
+              <p>功能粒度提交、文档同步；后续迭代中修复交互边界、弹窗自适应、状态口径等缺陷 40+ 处，全部走同一套验收流程。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="shots reveal">
+          <figure class="shot">
+            <img src="shots/dashboard-1440.png" alt="质控工作站全局面板（已脱敏）" loading="lazy" />
+            <figcaption>质控工作站全局面板：组级指标 · 审核待办 · 文档管理（已脱敏，数值以 — 占位）</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="shots/todo-groups.png" alt="医生总待办：六组模型与患者分组（已脱敏）" loading="lazy" />
+            <figcaption>医生总待办：医生视角六组模型 + 患者分组 + 优先级（患者姓名已脱敏）</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>医疗数据合规：</strong>本页截图已完成脱敏处理——患者姓名以马赛克遮盖，内部运营指标以 "—" 占位；页面不包含任何可识别的患者信息。
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">03 / Evaluation</div>
+        <h2>评测视角：我会怎样给 Coding Agent 做 Harness</h2>
+        <p>在实习里做的是"给人用的验收回路"，本质上与给 Agent 做评测是同一件事：定义任务、定义可判定的成功标准、可重复执行、能看回归。</p>
+      </div>
+
+      <div class="card reveal" style="padding:0;overflow:hidden">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:22%">维度</th><th>指标设计</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>任务与成本</th>
+              <td>任务成功率 / 一次性通过率（first-shot）；多轮修复轮数；平均耗时与 token 成本；任务集从真实 issue / PR 反抽，按难度分层（单文件改 / 跨模块 / 跨端）。</td>
+            </tr>
+            <tr>
+              <th>代码与回归</th>
+              <td>编译 / 类型检查 / lint / 单测通过率；是否引入回归（原有测试是否全绿）；人工改动率——PR diff 被改动的比例，越小越好。</td>
+            </tr>
+            <tr>
+              <th>界面与还原度</th>
+              <td>截图相似度（SSIM / 像素 diff）+ 关键 DOM 断言；多分辨率（900 / 1100 / 1440 / 1920）一致性；同一任务多种子重复跑，评估方差稳定性。</td>
+            </tr>
+            <tr>
+              <th>数据集与回归集</th>
+              <td>保留"标准答案 diff"用于对比；建立 badcase 库与固定回归集，每次模型 / 提示词变更都跑一遍。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pillars-grid" style="margin-top:22px">
+        <div class="card reveal">
+          <h3>可复用清单</h3>
+          <ul>
+            <li>先方案后编码：范围与验收标准前置，Agent 只负责在边界内实现</li>
+            <li>规则文件化：把"口头共识"变成 Agent 每次必读的约束</li>
+            <li>契约先行：接口文档 + 类型定义 + Mock，是最高性价比的上下文</li>
+            <li>完成标准机器可判定：单测 / 截图 / DOM 断言，而非"看起来没问题"</li>
+            <li>小步提交：功能粒度 diff，便于 review、回滚与归因</li>
+            <li>交接文档化：让下一个人（或下一轮会话）能无损续做</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>常见失败模式与对策</h3>
+          <ul>
+            <li>幻觉 API / 隐式改坏无关代码 → 限定可改范围 + 强制跑验证 + 小步提交</li>
+            <li>上下文过载 → 分模块给文件、用摘要式文档替代全量代码</li>
+            <li>测试写得过松 → 人工 review 测试断言，把验收标准写进方案</li>
+            <li>越界重构 → 规则文件明确禁止项，必要时回滚</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <section>
+    <div class="wrap">
+      <div class="contact reveal">
+        <div>
+          <div class="kicker">04 / Contact</div>
+          <h2 style="font-size:clamp(22px,3vw,30px)">想聊聊 AI Coding 基建？</h2>
+          <p style="color:var(--sub);margin-top:12px;max-width:560px">
+            我对「AI Native 研发工具 / 上下文管理 / Coding Agent 评测」这条线很感兴趣，也愿意把它和医疗场景结合起来做。
+          </p>
+        </div>
+        <div class="links">
+          <a href="mailto:1390874005@qq.com">📧 1390874005@qq.com</a>
+          <a href="tel:+8618747175627">📱 187-4717-5627</a>
+          <a href="index.html">🏠 返回主页简历</a>
+          <a href="https://github.com/tiandah307-byte" target="_blank" rel="noopener">🐙 GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap inner">
+    <span>© 2026 黄天达 · AI Coding 工作流与评测实践</span>
+    <span>所有数值口径均来自实习期间的真实工程记录</span>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
