@@ -33,13 +33,13 @@ python -m http.server 8080
 ## 部署
 
 **Cloudflare Pages（与原站一致）**
-1. 连接 GitHub 仓库 `tiandah307-byte/resume`
+1. 连接 GitHub 仓库 `tiandah/resume`
 2. Build command 留空，Build output directory 填 `/`
 3. 部署后绑定自定义域名（或继续用 `*.pages.dev` 子域）
 
 **GitHub Pages**
 1. Settings → Pages → Source 选择 `Deploy from a branch`，分支 `main`，目录 `/ (root)`
-2. 访问 `https://tiandah307-byte.github.io/resume/`
+2. 访问 `https://tiandah.github.io/resume/`
 3. 仓库内已包含 `.nojekyll`（避免下划线目录被忽略）
 
 ## 更新简历
