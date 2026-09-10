@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AI Coding 工作流与评测实践 — 黄天达</title>
 <meta name="description" content="医疗 AI 全栈开发中的 AI Coding 实践：规则化上下文、方案驱动开发、契约即上下文、自动化验收 Harness，以及如何给 Coding Agent 设计评测指标。" />
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -110,7 +111,7 @@
         </div>
         <div class="card glow-card reveal">
           <h3>⑥ 领域约束前置</h3>
-          <p style="color:var(--sub);font-size:14px">医疗场景的数据与合规约束，必须在上下文里说清楚。</p>
+          <p style="color:var(--sub);font-size:14px">医疗场景的数据边界与权限约束，必须在上下文里说清楚。</p>
           <ul>
             <li>按患者数据隔离（member 维度），避免跨患者缓存</li>
             <li>AI 输出需可审核、可修改、可追溯（labelData 同义词匹配兼容历史数据）</li>
@@ -164,20 +165,16 @@
 
         <div class="shots reveal">
           <figure class="shot">
-            <img src="shots/dashboard-1440.png" alt="质控工作站全局面板（已脱敏）" loading="lazy" />
-            <figcaption>质控工作站全局面板：组级指标 · 审核待办 · 文档管理（已脱敏，数值以 — 占位）</figcaption>
+            <img src="shots/dashboard-1440.png" alt="质控工作站全局面板" loading="lazy" />
+            <figcaption>质控工作站全局面板：组级指标 · 审核待办 · 文档管理</figcaption>
           </figure>
           <figure class="shot">
-            <img src="shots/todo-groups.png" alt="医生总待办：六组模型与患者分组（已脱敏）" loading="lazy" />
-            <figcaption>医生总待办：医生视角六组模型 + 患者分组 + 优先级（患者姓名已脱敏）</figcaption>
+            <img src="shots/todo-groups.png" alt="医生总待办：六组模型与患者分组" loading="lazy" />
+            <figcaption>医生总待办：医生视角六组模型 + 患者分组 + 优先级</figcaption>
           </figure>
         </div>
       </div>
-
-      <div class="note">
-        <strong>医疗数据合规：</strong>本页截图已完成脱敏处理——患者姓名以马赛克遮盖，内部运营指标以 "—" 占位；页面不包含任何可识别的患者信息。
-      </div>
-    </div>
+</div>
   </section>
 
   <hr class="section-divider" />
