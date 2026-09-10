@@ -133,11 +133,10 @@
           </div>
           <p class="tl-role">Vue 3 + TypeScript + Vite + Element Plus + Pinia + Axios + ECharts + Vitest ｜ pnpm + Turborepo monorepo（3 个应用）</p>
           <ul class="tl-body">
-            <li><b>病情洞察 / 病历 AI 技能工作流：</b>六步向导（每步独立保存与续做、结论速览冲突判定）、病历 AI 抽取与医生审核（文书来源多选、候选类型快捷分配、标签增删、归档 labelData 字段同义词匹配兼容历史数据），Axios 请求层 + SSE 流式对接 AI 技能服务。</li>
-            <li><b>医生"总待办"重构：</b>医生视角六组模型（风险 / 今日诊疗 / 待我响应 / 待我确认 / 随访安排 / 待我完善），患者分组卡片 + 优先级 + 风险高亮 + 搜索与视图筛选，并接入真实接口。</li>
-            <li><b>运营工作站（新模块从 0 搭建）：</b>设计配置驱动的通用模块框架——ModuleView 按 schema 渲染 Tab / 指标卡 / 表格 / 图表，配合 BlockRenderer / ModuleTable / SimpleChart / DetailDialog 与统一下钻接口及模块关系定义；基于框架交付用户数据台、用户服务台、积分商城三个业务模块。</li>
-            <li><b>质控工作站从 0 到 1：</b>编写 10 章节《全局面板设计与实施工作方案》，落地组级指标、审核待办、文档管理、ECharts 可视化与"患者待关注"状态算法、通用审核工作流与资质审核；TypeScript 接口类型 + Axios 落地 7 API + 7 Mock 全联调，含中英 i18n。</li>
-            <li><b>工程与质量：</b>Vitest + @vue/test-utils 面板单测；用 Chrome DevTools Protocol 做 900/1100/1440/1920 多分辨率浏览器自动化验收并截图留档（40+ 张）；修复交互与状态口径缺陷 40+ 处。</li>
+            <li><b>医生工作站：</b>病情洞察六步向导（每步独立保存 / 续做）、病历 AI 抽取与医生审核、沟通辅助按患者持久化。</li>
+            <li><b>医生"总待办"重构：</b>医生视角六组模型 + 患者分组 + 优先级与风险高亮 + 搜索与视图筛选，接入真实接口。</li>
+            <li><b>质控工作站 0 → 1：</b>10 章节方案 → 组级指标 / 审核待办 / 文档管理 / 患者待关注算法 → 7 API + 7 Mock 全联调 → 多分辨率自动化验收。</li>
+            <li><b>运营工作站：</b>配置驱动通用模块框架（ModuleView 按 schema 渲染 + 统一下钻接口），交付用户数据台 / 用户服务台 / 积分商城。</li>
           </ul>
           <div class="metrics">
             <span class="metric">149 commits / 月</span>
@@ -158,10 +157,8 @@
           </div>
           <p class="tl-role">Python + FastAPI + RAG + Milvus + vLLM(Qwen3.5-9B) + MySQL + Docker</p>
           <ul class="tl-body">
-            <li><b>RAG 诊断链路：</b>病历选用顺序规则（优先 label_data 中可提取时间最新的记录，回退 created_time/id）→ embedding → Milvus 检索 top-k 疾病定义 → vLLM 输出 Top5 候选疾病 + 概率与理由。</li>
-            <li><b>病因 / 诱因查询：</b>返回全部病因·机制组合，去重 + 空结果兜底，数据库配置环境变量化，补充执行日志。</li>
-            <li><b>相似患者画像与向量库：</b>动态读取 level3/level4 标签结构（去掉硬编码）、叶子标签取值构建画像、同 tag_code 取最新、无有效标签跳过并统计 skipped、Top 标签贡献可解释。</li>
-            <li><b>工程化：</b>dev/uat/prod 三环境 collection 与产物隔离、成员级数据隔离、统一日志工具、Docker env_file 部署。</li>
+            <li><b>RAG 诊断链路：</b>病历选用顺序规则 → embedding → Milvus 检索疾病定义 → vLLM 输出 Top5 候选疾病 + 概率与理由。</li>
+            <li><b>知识与检索能力：</b>病因 / 诱因多结果查询、相似患者向量库与可解释 Top 标签贡献、三环境隔离、统一日志与 Docker 部署。</li>
           </ul>
           <div class="metrics">
             <span class="metric">5 类 HTTP 能力</span>
@@ -706,35 +703,52 @@
 
 
 
-<div data-detail="exp-frontend">
-    <p class="d-lead">实习期前端主责：在 pnpm + Turborepo monorepo（3 个应用）里开发医生工作站、质控工作站与运营工作站。</p>
-    <h4>关键工作</h4>
+  <div data-detail="exp-frontend">
+    <p class="d-lead">实习期前端主责：在 pnpm + Turborepo monorepo（3 个应用）里开发医生工作站、质控工作站与运营工作站，单月 149 次提交。</p>
+    <h4>医生工作站</h4>
     <ul>
-      <li><b>医生工作站：</b>病情洞察六步向导、病历 AI 抽取与审核、沟通辅助持久化、总待办六组模型、患者权限与布局差异。</li>
-      <li><b>质控工作站：</b>10 章节方案 → 组级指标 / 审核待办 / 文档管理 / ECharts 可视化 / 患者待关注算法 / 通用审核工作流 / 资质审核，7 API + 7 Mock 全联调。</li>
-      <li><b>运营工作站：</b>配置驱动模块框架（ModuleView + BlockRenderer / ModuleTable / SimpleChart / DetailDialog + 统一下钻接口），交付用户数据台、用户服务台、积分商城。</li>
-      <li><b>工程规范：</b>TS strict、ESLint / Prettier / Commitlint / Husky、分支流程与功能粒度提交。</li>
+      <li><b>病情洞察 / 病历 AI 技能工作流：</b>六步向导（每步独立保存与续做、结论速览冲突动态判定）；病历 AI 抽取与医生审核（文书来源多选、候选类型快捷分配、标签增删、归档 labelData 字段同义词匹配以兼容历史数据）；沟通辅助按患者本地持久化。</li>
+      <li><b>接口联调：</b>Axios 请求层统一封装 + SSE 流式对接 AI 技能服务，处理断流、重试与代理缓冲问题。</li>
+      <li><b>总待办重构：</b>医生视角六组模型（风险 / 今日诊疗 / 待我响应 / 待我确认 / 随访安排 / 待我完善），患者分组卡片 + 优先级 + 风险高亮 + 搜索与视图筛选，并接入真实接口。</li>
     </ul>
-    <h4>结果</h4>
+    <h4>质控工作站（0 → 1）</h4>
     <ul>
-      <li>单月 149 次提交、改动 343 个文件；修复交互与状态口径缺陷 40+ 处；多分辨率自动化验收截图 40+ 张。</li>
+      <li><b>方案：</b>编写 10 章节《全局面板设计与实施工作方案》——范围界定、数据口径与 Mock 一致性、5 个接口约定、状态算法、12 项任务拆分、验收标准。</li>
+      <li><b>实现：</b>TypeScript 接口类型 + Axios 落地 7 API + 7 Mock 全联调；组级指标、工作组两级展开、审核待办、文档管理、ECharts 可视化、"患者待关注"状态算法、通用审核工作流与资质审核；中英 i18n。</li>
     </ul>
-    <div class="d-tags"><span>Vue 3</span><span>TypeScript</span><span>monorepo</span><span>组件抽象</span><span>自动化验收</span></div>
+    <h4>运营工作站（新模块）</h4>
+    <ul>
+      <li>设计配置驱动的通用模块框架：ModuleView 按 schema 渲染 Tab / 指标卡 / 表格 / 图表，配合 BlockRenderer、ModuleTable、SimpleChart、DetailDialog 与统一下钻接口（overview / details）及模块关系定义。</li>
+      <li>基于框架交付用户数据台、用户服务台、积分商城三个业务模块，并接入路由与侧边导航；Mock 与真实接口一键切换。</li>
+    </ul>
+    <h4>工程与质量</h4>
+    <ul>
+      <li>Vitest + @vue/test-utils 面板单测；Chrome DevTools Protocol 做 900 / 1100 / 1440 / 1920 四档分辨率自动化验收并截图留档（40+ 张）。</li>
+      <li>TS strict + ESLint / Prettier / Commitlint / Husky 规范下，修复交互与状态口径缺陷 40+ 处；改动 343 个文件。</li>
+    </ul>
+    <div class="d-tags"><span>Vue 3</span><span>TypeScript</span><span>Pinia</span><span>Element Plus</span><span>Axios</span><span>ECharts</span><span>Vitest</span><span>CDP</span><span>monorepo</span></div>
   </div>
 
+
   <div data-detail="exp-backend">
-    <p class="d-lead">独立开发的癫痫专病 DeepThinking 后端 AI 服务，是医生工作站"病情洞察"等能力的数据与推理底座。</p>
-    <h4>关键工作</h4>
+    <p class="d-lead">独立开发的癫痫专病 DeepThinking 后端 AI 服务，是医生工作站"病情洞察"等能力的数据与推理底座（20 commits，仓库首批提交作者）。</p>
+    <h4>背景 / 问题</h4>
     <ul>
-      <li>病历选用顺序规则、RAG 检索与 vLLM 诊断输出、病因 / 诱因查询、相似患者向量库与可解释标签贡献。</li>
-      <li>三环境隔离、成员级数据隔离、统一日志、Docker env_file 部署；FastAPI 暴露 5 类能力。</li>
-      <li>与前端约定接口契约（响应包裹、数据隔离、SSE 缓冲），减少联调返工。</li>
+      <li>疾病定义散落在知识库文档里，医生难以快速对照；患者病历结构不统一，直接丢给大模型容易答非所问。</li>
+      <li>临床审阅需要依据，纯生成式回答无法满足"为什么是这个诊断"的要求。</li>
+    </ul>
+    <h4>做法</h4>
+    <ul>
+      <li><b>病历规则化选取：</b>同一 member_id 下优先选 label_data 中可提取时间最新的记录，全部无法提取才回退 created_time / id，避免补录病历覆盖真实病程。</li>
+      <li><b>RAG 链路：</b>病历摘要 → embedding → Milvus 检索 top-k 疾病定义 → vLLM（Qwen3.5-9B）输出 Top5 候选疾病 + 概率 + 理由；知识库由 SNOMED-CT Excel 转 209 条 JSONL 后入库。</li>
+      <li><b>查询与画像：</b>病因 / 诱因返回全部机制组合并去重、空结果兜底；相似患者动态读取 level3 / level4 标签结构构建画像与向量库，同 tag_code 取最新、无标签跳过并统计 skipped、输出可解释的 Top 标签贡献。</li>
+      <li><b>工程化：</b>dev / uat / prod 三环境 collection 与产物隔离、成员级数据隔离、统一日志工具、Docker env_file 部署；FastAPI 暴露 5 类能力。</li>
     </ul>
     <h4>结果</h4>
     <ul>
-      <li>20 commits（仓库首批提交作者），前端"病情洞察"直接复用其推理链路。</li>
+      <li>交付 5 类 HTTP 能力并作为前端"病情洞察"的推理底座；20 commits 为该项目后端仓库首批提交。</li>
     </ul>
-    <div class="d-tags"><span>Python</span><span>FastAPI</span><span>RAG</span><span>Milvus</span><span>vLLM</span><span>Docker</span></div>
+    <div class="d-tags"><span>Python</span><span>FastAPI</span><span>RAG</span><span>Milvus</span><span>vLLM</span><span>MySQL</span><span>Docker</span></div>
   </div>
 
 </div>
