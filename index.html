@@ -188,7 +188,7 @@
       </div>
 
       <div class="filter-tabs" id="filterTabs" role="tablist">
-        <button class="filter-tab is-active" data-filter="all" role="tab">全部 10</button>
+        <button class="filter-tab is-active" data-filter="all" role="tab">全部 9</button>
         <button class="filter-tab" data-filter="intern" role="tab">实习项目</button>
         <button class="filter-tab" data-filter="campus" role="tab">在校项目</button>
         <button class="filter-tab" data-filter="ai" role="tab">AI / 算法</button>
@@ -298,36 +298,22 @@
           </div>
         </article>
 
-        <article class="project reveal clickable" data-kind="campus" data-open="p8" style="--accent:#38bdf8" tabindex="0" role="button" aria-label="查看项目细节：医疗影像数据标注与质量管控">
+        <article class="project reveal clickable" data-kind="campus ai" data-open="p8" style="--accent:#f472b6" tabindex="0" role="button" aria-label="查看项目细节：皮肤病变辅助识别系统（可解释 AI）">
           <div class="num">08</div>
-          <div>
-            <h3>医疗影像数据标注与质量管控</h3>
-            <div class="cat">LabelStudio / pandas / 数据质量</div>
-            <div class="team">课程实践 · 独立完成 · 规范被采纳为课程模板</div>
-            <p class="desc">面向肺部 CT 数据集把标注质量做成可度量的流程：LabelStudio 标注流水线、pandas 矢量化批量校验替代逐行遍历、三级审核（标注 → 互审 → 专家抽检）与格式校验脚本；沉淀的 15 页标注规范被课程组采纳为后续项目标准模板。</p>
-            <div class="metrics">
-              <span class="metric">一致性 82% → 94%</span><span class="metric">误标率 −60%</span><span class="metric">清洗 8s → 0.3s（26×）</span>
-            </div>
-            <span class="open-hint">查看细节 →</span>
-          </div>
-        </article>
-
-        <article class="project reveal clickable" data-kind="campus ai" data-open="p9" style="--accent:#f472b6" tabindex="0" role="button" aria-label="查看项目细节：皮肤病变辅助识别系统（可解释 AI）">
-          <div class="num">09</div>
           <div>
             <h3>皮肤病变辅助识别系统（可解释 AI）</h3>
             <div class="cat">PyTorch / ResNet-50 / Grad-CAM / Flask</div>
-            <div class="team">团队项目 · 3 人协作 · 雏雁创新创业大赛一等奖（60+ 队）</div>
-            <p class="desc">ISIC 皮肤镜数据集 10,000+ 张、7 分类：负责数据预处理、标签整理、模型测试评估与可解释性分析，用 Grad-CAM 可视化决策依据，并用 Flask 开发实时 Demo。</p>
+            <div class="team">团队项目 · 3 人协作 · 医学图像分类 + 可解释性 + 模型服务化</div>
+            <p class="desc">ISIC 皮肤镜图像 10,000+ 张、7 分类。我负责数据清洗与标签整理、模型测试与评估、可解释性分析，并独立完成 Demo 开发：ResNet-50 迁移学习建模，用混淆矩阵定位易混类别、多分类 AUC 衡量区分度，再用 Grad-CAM 检查模型是在看病灶还是背景伪影，最后用 Flask 做出可实时上传识别的 Demo。</p>
             <div class="metrics">
-              <span class="metric">一等奖（60+ 队）</span><span class="metric">混淆矩阵 + 多分类 AUC</span><span class="metric">Grad-CAM 可解释性</span>
+              <span class="metric">ISIC 10,000+ 张 / 7 分类</span><span class="metric">混淆矩阵 + 多分类 AUC</span><span class="metric">Grad-CAM</span><span class="metric">Flask 实时 Demo</span>
             </div>
             <span class="open-hint">查看细节 →</span>
           </div>
         </article>
 
-        <article class="project reveal clickable" data-kind="campus" data-open="p10" style="--accent:#6366f1" tabindex="0" role="button" aria-label="查看项目细节：医院门诊数据统计分析与可视化">
-          <div class="num">10</div>
+        <article class="project reveal clickable" data-kind="campus" data-open="p9" style="--accent:#6366f1" tabindex="0" role="button" aria-label="查看项目细节：医院门诊数据统计分析与可视化">
+          <div class="num">09</div>
           <div>
             <h3>医院门诊数据统计分析与可视化</h3>
             <div class="cat">SQL / scipy.stats / 统计推断 / matplotlib</div>
@@ -674,47 +660,33 @@
     <div class="d-tags"><span>Python</span><span>降维分析</span><span>投影分布</span><span>计算神经科学</span></div>
   </div>
 
-  <div data-detail="p8">
-    <p class="d-lead">把"标注质量"做成可度量的工程链路：工具化 + 脚本化 + 流程化。</p>
+    <div data-detail="p8">
+    <p class="d-lead">从模型到可演示的产品：不止做分类，还要让使用方看得懂、能上手。</p>
     <h4>背景 / 问题</h4>
     <ul>
-      <li>肺部 CT 影像数据集 2,000+ 条标注存在格式不一致与标注冲突，一致性仅 82%，直接拖累后续训练数据可用性。</li>
-      <li>逐行遍历校验导致单次清洗耗时 8 秒，无法沉淀为标准流程。</li>
+      <li>ISIC 皮肤镜图像 10,000+ 张、7 分类，属于类别间高度相似的细粒度任务，且医疗场景对"为什么这么判"有强诉求——纯黑盒结果无法建立信任。</li>
+      <li>团队 3 人协作，需要在有限时间内同时保证数据质量、模型效果与可演示性。</li>
     </ul>
     <h4>做法</h4>
     <ul>
-      <li><b>工具化：</b>用 LabelStudio 搭建标注流水线，统一标注格式与导出规范（COCO / YOLO 双格式）。</li>
-      <li><b>脚本化：</b>以 pandas groupby().apply() 矢量化批量校验替代逐行遍历，把校验从"人工抽查"变成"每次必跑"。</li>
-      <li><b>流程化：</b>设计三级审核（标注 → 互审 → 专家抽检）与格式校验脚本；沉淀 15 页标注规范（采集 SOP、脚本模板、审核 checklist、数据增强策略）。</li>
+      <li><b>数据：</b>负责清洗与标签核对——去重、尺寸统一、异常样本剔除，并确认 7 类分布，避免把数据问题带进模型。</li>
+      <li><b>建模：</b>用 ResNet-50 做迁移学习，按验证集调参。</li>
+      <li><b>评估：</b>不只看准确率——用混淆矩阵定位易混类别，用多分类 AUC 衡量整体区分度，据此决定是否需要针对性补充样本。</li>
+      <li><b>可解释：</b>用 Grad-CAM 叠加病灶热力图，检查模型关注的是病灶区域还是背景伪影，并据此复查误判样本。</li>
+      <li><b>交付：</b>用 Flask 搭建实时上传识别 Demo，让模型结果以"产品"的形式被体验和验证。</li>
     </ul>
     <h4>结果</h4>
     <ul>
-      <li>标注一致性 82% → <b>94%</b>，误标率降低 <b>60%</b>，单次清洗耗时 8s → <b>0.3s（26 倍）</b>。</li>
-      <li>标注规范被课程组采纳为后续项目标准模板，40+ 名同学参考使用。</li>
+      <li>完成 7 分类建模 → 评估 → 可解释性分析的完整闭环，Demo 支持上传图像即时返回预测结果与模型关注区域。</li>
+      <li>[待补] 准确率 / 多分类 AUC 具体数值。</li>
     </ul>
-    <div class="d-tags"><span>LabelStudio</span><span>pandas</span><span>数据质量</span><span>三级审核</span><span>COCO / YOLO</span></div>
+    <div class="d-tags"><span>PyTorch</span><span>ResNet-50</span><span>混淆矩阵</span><span>AUC</span><span>Grad-CAM</span><span>Flask</span></div>
   </div>
 
-  <div data-detail="p9">
-    <p class="d-lead">从模型到可演示的产品：算法能力 + 可解释性 + 可交付 Demo。</p>
-    <h4>背景 / 问题</h4>
-    <ul>
-      <li>ISIC 皮肤镜图像 10,000+ 张、7 分类，评委与临床使用方都要求模型具备可解释性，纯黑盒结果无法建立信任。</li>
-    </ul>
-    <h4>做法</h4>
-    <ul>
-      <li>负责数据预处理与 7 分类标签整理，用 ResNet-50 完成训练与推理。</li>
-      <li>以混淆矩阵与多分类 AUC 评估，而不是只看准确率；用 Grad-CAM 可视化模型关注的病灶区域。</li>
-      <li>用 Flask 开发实时上传识别 Demo，让评委直接上手体验。</li>
-    </ul>
-    <h4>结果</h4>
-    <ul>
-      <li>从 60+ 支队伍中获雏雁创新创业大赛一等奖；可解释性分析成为项目核心竞争力。</li>
-    </ul>
-    <div class="d-tags"><span>PyTorch</span><span>ResNet-50</span><span>Grad-CAM</span><span>AUC</span><span>Flask</span></div>
-  </div>
 
-  <div data-detail="p10">
+
+
+<div data-detail="p9">
     <p class="d-lead">用统计推断替代经验判断：从 10 万+ 条记录里找到影响候诊时长的因素。</p>
     <h4>背景 / 问题</h4>
     <ul>
@@ -732,6 +704,10 @@
     </ul>
     <div class="d-tags"><span>SQL</span><span>scipy.stats</span><span>卡方检验</span><span>数据可视化</span></div>
   </div>
+
+
+
+
 
 
 <div data-detail="exp-frontend">
