@@ -304,7 +304,7 @@
             <h3>皮肤病变辅助识别系统（可解释 AI）</h3>
             <div class="cat">PyTorch / ResNet-50 / Grad-CAM / Flask</div>
             <div class="team">团队项目 · 3 人协作 · 医学图像分类 + 可解释性 + 模型服务化</div>
-            <p class="desc">ISIC 皮肤镜图像 10,000+ 张、7 分类。我负责数据清洗与标签整理、模型测试与评估、可解释性分析，并独立完成 Demo 开发：ResNet-50 迁移学习建模，用混淆矩阵定位易混类别、多分类 AUC 衡量区分度，再用 Grad-CAM 检查模型是在看病灶还是背景伪影，最后用 Flask 做出可实时上传识别的 Demo。</p>
+            <p class="desc">ISIC 皮肤镜图像 10,000+ 张、7 分类：负责数据清洗与标签整理、模型训练与评估、可解释性分析，用混淆矩阵定位易混类别、多分类 AUC 衡量区分度，再用 Grad-CAM 检查模型关注区域，并用 Flask 做出可实时上传识别的 Demo。</p>
             <div class="metrics">
               <span class="metric">ISIC 10,000+ 张 / 7 分类</span><span class="metric">混淆矩阵 + 多分类 AUC</span><span class="metric">Grad-CAM</span><span class="metric">Flask 实时 Demo</span>
             </div>
@@ -660,30 +660,26 @@
     <div class="d-tags"><span>Python</span><span>降维分析</span><span>投影分布</span><span>计算神经科学</span></div>
   </div>
 
-    <div data-detail="p8">
+      <div data-detail="p8">
     <p class="d-lead">从模型到可演示的产品：不止做分类，还要让使用方看得懂、能上手。</p>
     <h4>背景 / 问题</h4>
     <ul>
-      <li>ISIC 皮肤镜图像 10,000+ 张、7 分类，属于类别间高度相似的细粒度任务，且医疗场景对"为什么这么判"有强诉求——纯黑盒结果无法建立信任。</li>
+      <li>ISIC 皮肤镜图像 10,000+ 张、7 分类，类别间高度相似；医疗场景对"为什么这么判"有强诉求，纯黑盒结果难以建立信任。</li>
       <li>团队 3 人协作，需要在有限时间内同时保证数据质量、模型效果与可演示性。</li>
     </ul>
     <h4>做法</h4>
     <ul>
-      <li><b>数据：</b>负责清洗与标签核对——去重、尺寸统一、异常样本剔除，并确认 7 类分布，避免把数据问题带进模型。</li>
-      <li><b>建模：</b>用 ResNet-50 做迁移学习，按验证集调参。</li>
-      <li><b>评估：</b>不只看准确率——用混淆矩阵定位易混类别，用多分类 AUC 衡量整体区分度，据此决定是否需要针对性补充样本。</li>
-      <li><b>可解释：</b>用 Grad-CAM 叠加病灶热力图，检查模型关注的是病灶区域还是背景伪影，并据此复查误判样本。</li>
-      <li><b>交付：</b>用 Flask 搭建实时上传识别 Demo，让模型结果以"产品"的形式被体验和验证。</li>
+      <li><b>数据：</b>负责清洗与标签核对（去重、尺寸统一、异常样本剔除，确认 7 类分布）。</li>
+      <li><b>建模与评估：</b>ResNet-50 迁移学习建模，按验证集调参；用混淆矩阵定位易混类别、多分类 AUC 衡量整体区分度，而不是只看准确率。</li>
+      <li><b>可解释性：</b>用 Grad-CAM 叠加病灶热力图，检查模型关注的是病灶区域还是背景伪影，并据此复查误判样本。</li>
+      <li><b>交付：</b>用 Flask 搭建实时上传识别 Demo，让结果以可体验的产品形式被验证。</li>
     </ul>
     <h4>结果</h4>
     <ul>
-      <li>完成 7 分类建模 → 评估 → 可解释性分析的完整闭环，Demo 支持上传图像即时返回预测结果与模型关注区域。</li>
-      <li>[待补] 准确率 / 多分类 AUC 具体数值。</li>
+      <li>完成"数据 → 建模 → 评估 → 可解释 → 可演示"的完整闭环，Demo 支持上传图像即时返回预测结果与模型关注区域。</li>
     </ul>
     <div class="d-tags"><span>PyTorch</span><span>ResNet-50</span><span>混淆矩阵</span><span>AUC</span><span>Grad-CAM</span><span>Flask</span></div>
   </div>
-
-
 
 
 <div data-detail="p9">
